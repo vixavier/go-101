@@ -2,11 +2,14 @@ package main
 
 import (
 	"fmt"
+
+	"github.com/vixavier/go-101/banco/contas"
 )
 
 func main() {
-	contaDaSilvia := ContaCorrente{titular: "Silvia", saldo: 300}
-	contaDoGustavo := ContaCorrente{titular: "Gustavo", saldo: 100}
+
+	contaDaSilvia := contas.ContaCorrente{titular: "Silvia", saldo: 300}
+	contaDoGustavo := contas.ContaCorrente{titular: "Gustavo", saldo: 100}
 
 	fmt.Println(contaDaSilvia)
 	fmt.Println(contaDoGustavo)
