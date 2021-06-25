@@ -1,9 +1,11 @@
 package contas
 
+import "go-101/clientes"
+
 type ContaCorrente struct {
-	titular       string
-	numeroAgencia int
-	numeroConta   int
+	Titular       clientes.Titular
+	NumeroAgencia int
+	NumeroConta   int
 	saldo         float64
 }
 
@@ -20,9 +22,9 @@ func (c *ContaCorrente) Sacar(valorDoSaque float64) string {
 func (c *ContaCorrente) Depositar(valorDoDeposito float64) (string, float64) {
 	if valorDoDeposito > 0 {
 		c.saldo += valorDoDeposito
-		return "Depósito realizado com sucesso. Saldo:", c.saldo
+		return "Depósito realizado com sucesso.", c.saldo
 	} else {
-		return "Valor do depósito inválido. Saldo:", c.saldo
+		return "Valor do depósito inválido.", c.saldo
 	}
 }
 
@@ -34,4 +36,8 @@ func (c *ContaCorrente) Transferir(valorDaTransferencia float64, contaDestino *C
 	} else {
 		return false
 	}
+}
+
+func (c *ContaCorrente) ObterSaldo() float64 {
+	return c.saldo
 }
