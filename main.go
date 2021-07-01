@@ -5,16 +5,39 @@ import (
 	"go-101/contas"
 )
 
-// Aula 4
+// Aula 5
 func main() {
-	// clienteBruno := clientes.Titular{"Bruno", "111.222.333.44", "Desenvolvedor"}
-	// contaDoBruno := contas.ContaCorrente{clienteBruno, 1234, 12345, 1000}
+	contaDoDenis := contas.ContaPoupanca{}
+	contaDoDenis.Depositar(100)
+	PagarBoleto(&contaDoDenis, 60)
 
-	contaExemplo := contas.ContaCorrente{}
-	contaExemplo.Depositar(100)
+	fmt.Println(contaDoDenis.ObterSaldo())
 
-	fmt.Println(contaExemplo.ObterSaldo())
+	contaDaLuisa := contas.ContaCorrente{}
+	contaDaLuisa.Depositar(500)
+	PagarBoleto(&contaDaLuisa, 400)
+
+	fmt.Println(contaDaLuisa.ObterSaldo())
 }
+
+func PagarBoleto(conta verificarConta, valorDoBoleto float64) {
+	conta.Sacar(valorDoBoleto)
+}
+
+type verificarConta interface {
+	Sacar(valor float64) string
+}
+
+// // Aula 4
+// func main() {
+// 	// clienteBruno := clientes.Titular{"Bruno", "111.222.333.44", "Desenvolvedor"}
+// 	// contaDoBruno := contas.ContaCorrente{clienteBruno, 1234, 12345, 1000}
+
+// 	contaExemplo := contas.ContaCorrente{}
+// 	contaExemplo.Depositar(100)
+
+// 	fmt.Println(contaExemplo.ObterSaldo())
+// }
 
 // Aula 3
 // func main() {
